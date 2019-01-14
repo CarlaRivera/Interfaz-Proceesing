@@ -1,0 +1,143 @@
+       //hongo de mario bross
+int i=0;
+int x=0;
+int y=0;
+
+void setup(){
+size(1000,600); //tamaño de pantalla
+}
+
+void draw(){
+  figura();
+  laberinto();
+}  
+ 
+  void figura(){
+  beginShape();
+fill(247,98,67);
+vertex(10+x,20+y);
+vertex(15+x,20+y);
+vertex(15+x,15+y);
+vertex(20+x,15+y);
+vertex(20+x,10+y);
+vertex(45+x,10+y);
+vertex(45+x,15+y);
+vertex(50+x,15+y);
+vertex(50+x,20+y);
+vertex(55+x,20+y);
+vertex(55+x,30+y);
+vertex(45+x,30+y);
+vertex(45+x,25+y);
+vertex(20+x,25+y);
+vertex(20+x,30+y);
+vertex(10+x,30+y);
+vertex(10+x,20+y);
+endShape();
+
+beginShape();
+fill(255,204,153);
+vertex(15+x,30+y);
+vertex(15+x,40+y);
+vertex(20+x,40+y);
+vertex(20+x,45+y);
+vertex(45+x,45+y);
+vertex(45+x,40+y);
+vertex(50+x,40+y);
+vertex(50+x,30+y);
+vertex(45+x,30+y);
+vertex(45+x,25+y);
+vertex(20+x,25+y);
+vertex(20+x,30+y);
+vertex(15+x,30+y);
+endShape();
+fill(0);
+rect(25+x,25+y,5,7);
+rect(35+x,25+y,5,7);
+}
+
+void laberinto(){
+stroke(0);
+//bordes
+strokeWeight(10);
+line(100,0,1000,0);
+line(1000,0,1000,500);
+line(1000,600,0,600);
+line(0,600,0,100);
+
+strokeWeight(5);
+//lineas verticales
+line(200,0,200,200);
+line(300,300,300,400);
+line(400,0,400,300);
+line(600,400,600,500);
+line(700,300,700,400);
+line(800,500,800,600);
+line(900,400,900,500);
+
+strokeWeight(5);
+//lineas horizontales
+line(0,300,300,300);
+line(400,300,700,300);
+line(300,400,600,400);
+line(600,500,800,500);
+line(900,500,1000,500);
+line(700,400,900,400);
+
+
+//limita el paso al borde izquierdo
+    if((x<=0)){
+      x=x+10;
+    }
+//limita el acceso al borde derecho
+if((x+50)>=width){
+      x=x-10;
+    }
+//limita el acceso al borde superior
+   if(y<=0){
+    y=y+10;
+    }
+//limita el paso al borde inferior
+    if((y+50)>=height){
+    y=y-10;
+    }
+if((x>150) && (y <= 200)){
+      x=x-10;
+   }
+    else if ((y>250) && (x<300)){
+      y=y-10;
+    }
+    else if((x>350) && (y <= 300)){
+      x=x-10;
+   }
+    else if ((y>350) && (x<600)){
+      y=y-10;
+    }
+    else if((x>650) && (y <= 350)){
+      x=x-10;
+   }
+    else if ((y>450) && (x<800)){
+      y=y-10;
+    }
+    else if((x>850) && (y <= 500)){
+      x=x-10;
+   }
+}
+    void keyPressed(){
+    background(2,181,160); 
+     if(keyCode==38) //arriba
+   { 
+   y=y-5;
+   }
+     if(keyCode==40) //abajo
+   { 
+   y=y+5;
+   }
+    if(keyCode==39) //derecha
+   { 
+   x=x+5;
+   }
+    if(keyCode==37) //izquierda
+   { 
+   x=x-5;
+   }
+  }
